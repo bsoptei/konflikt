@@ -7,15 +7,8 @@ import java.util.stream.Collectors;
  * Created by Lenovo on 1/25/2017.
  */
 public class ResolutionFinder {
-    private ArrayList<GroupMember> groupOfPlayers;
-    private Integer groupSize;
 
-    public ResolutionFinder(ArrayList<GroupMember> groupOfPlayers) {
-        this.groupOfPlayers = groupOfPlayers;
-        this.groupSize = groupOfPlayers.size();
-    }
-
-    private ArrayList<String> findSolutions() {
+    private ArrayList<String> findSolutions(Integer groupSize) {
         TKRuleSet tkRuleSet = new TKRuleSet();
         if (groupSize == 2) {
             return tkRuleSet.createCompatiblePairs();
@@ -24,9 +17,10 @@ public class ResolutionFinder {
         }
     }
 
-    public Map<String, Double> generateSolutionsWithProbabilities() {
+    public Map<String, Double> generateSolutionsWithProbabilities(ArrayList<GroupMember> groupOfPlayers) {
         Map<String, Double> solutionsWithProbabilities = new HashMap<>();
-        ArrayList<String> solutions = findSolutions();
+        Integer groupSize = groupOfPlayers.size();
+        ArrayList<String> solutions = findSolutions(groupSize);
         for (String solution : solutions) {
             Double weightedProbability = 0.000;
             for (int i = 0; i < solution.length(); i++) {

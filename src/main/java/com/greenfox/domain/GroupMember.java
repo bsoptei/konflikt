@@ -34,6 +34,9 @@ public class GroupMember {
     @Transient
     private boolean selected;
 
+    @Transient
+    private Double sumOfScores;
+
     public GroupMember(String name,
                        Double competingScore,
                        Double compromisingScore,
@@ -61,7 +64,12 @@ public class GroupMember {
     public void normalizeScores() {
         this.VKEAPScores = new Double[] {this.competingScore,
                 this.compromisingScore,this.avoidingScore, this.accommodatingScore, this.collaboratingScore};
-        Double sumOfScores = VKEAPScores[0] + VKEAPScores[1] + VKEAPScores[2] + VKEAPScores[3] + VKEAPScores[4];
+        sumOfScores = VKEAPScores[0] + VKEAPScores[1] + VKEAPScores[2] + VKEAPScores[3] + VKEAPScores[4];
+
+    }
+
+    private void generateConflictStrategies(){
+        normalizeScores();
         for (int i = 0; i < VKEAPScores.length; i++) {
             this.conflictStrategies.put(TKRuleSet.strategies.get(i), VKEAPScores[i] / sumOfScores);
         }
@@ -69,6 +77,9 @@ public class GroupMember {
 
 
     public Double obtainStrategyProbability(String strategy) {
+        if (conflictStrategies == null || conflictStrategies.size() == 0) {
+            generateConflictStrategies();
+        }
         return conflictStrategies.get(strategy);
     }
 
