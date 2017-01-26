@@ -27,24 +27,16 @@
         </table>
         </td>
 
-
-
-
-
-        <!--<td th:text="${player.VKEAPScores[1]}">0.2</td>-->
-        <!--<td th:text="${player.VKEAPScores[2]}">0.3</td>-->
-        <!--<td th:text="${player.VKEAPScores[3]}">0.4</td>-->
-        <!--<td th:text="${player.VKEAPScores[4]}">0.5</td>-->
     </tr>
     </tbody>
 </table>
 <div th:each="solution, iter: ${solutions}">
 
     <ul th:if="${iter.count le 5}" >
-        <li th:text="'Key: ' + ${solution.key} + ', Value: ' + ${#numbers.formatDecimal(solution.value, 1, 2)}"></li>
+        <li th:text="'Resolution number ' + ${iter.count} + ', Weighted score: ' + ${#numbers.formatDecimal(solution.value, 1, 2)}"></li>
         <li>
         <ul th:each="player, iterStat:${players}">
-            <li th:text="${player.name} + ${solution.key.charAt(iterStat.index)}"></li>
+            <li th:text="${player.name} + '\'s strategy: ' + ${strategyNames.get(solution.key.charAt(iterStat.index))}"></li>
         </ul>
         </li>
     </ul>

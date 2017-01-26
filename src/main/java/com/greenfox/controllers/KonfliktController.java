@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * Created by Lenovo on 1/26/2017.
@@ -23,10 +24,19 @@ public class KonfliktController {
             new PlayerInConflict("Jeremiah", new Double[]{0.1, 0.2, 0.2, 0.2, 0.4})
     ));
 
+    private HashMap<Character, String> strategyNames = new HashMap<Character,String>(){{
+        put('V',"Competing");
+        put('K',"Compromising");
+        put('E',"Avoiding");
+        put('A',"Accommodating");
+        put('P',"Collaborating");
+    }};
+
     @RequestMapping("/results")
     public String showResults(Model model){
         ResolutionFinder myResolutionFinder = new ResolutionFinder(players);
         model.addAttribute("players", players);
+        model.addAttribute("strategyNames",strategyNames);
         model.addAttribute("solutions",myResolutionFinder.generateSolutionsWithProbabilities());
         return "results";
     }
