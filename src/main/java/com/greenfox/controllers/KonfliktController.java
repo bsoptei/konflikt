@@ -2,6 +2,7 @@ package com.greenfox.controllers;
 
 import com.greenfox.domain.GroupMember;
 import com.greenfox.domain.SimulationForm;
+import com.greenfox.domain.Source;
 import com.greenfox.service.GroupMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Lenovo on 1/26/2017.
@@ -56,14 +58,26 @@ public class KonfliktController {
 
     @RequestMapping("/simulate")
     public String simulateGet(Model model){
-        model.addAttribute("selectedPeople", new ArrayList<Double>());
-        model.addAttribute("people", groupMemberService.obtainAllGroupMembers());
+
+        List<GroupMember> testList = groupMemberService.obtainAllGroupMembers();
+        String[] environmentList = new String[5];
+        for(int i = 0; i < 5; i++)
+        {
+            environmentList[i] = "afsfaf";
+        }
+        model.addAttribute("testList", testList);
+        model.addAttribute("source", new Source());
+        model.addAttribute("environmentList", environmentList);
+        SimulationForm simulationForm = new SimulationForm();
+        simulationForm.getMemberList().addAll(groupMemberService.obtainAllGroupMembers());
+        model.addAttribute("wrapper", simulationForm);
+//        model.addAttribute("people", groupMemberService.obtainAllGroupMembers());
         return "simulate";
     }
 
     @PostMapping("/simulate")
-    public void simulatePut(@ModelAttribute SimulationForm simulationForm) {
-        System.out.println(simulationForm);
+    public void simulatePut(@ModelAttribute Source source, Model model) {
+        System.out.println(source.getTestList().toString());
     }
 
     @RequestMapping("/results")

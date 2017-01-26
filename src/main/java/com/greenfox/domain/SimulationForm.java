@@ -10,5 +10,5 @@ import java.util.ArrayList;
  */
 @Data
 public class SimulationForm {
-    private ArrayList<String> memberList;
+    private ArrayList<GroupMember> memberList = new ArrayList<>();
 }

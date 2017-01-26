@@ -7,34 +7,95 @@
 <body>
 <h1>Hello!</h1>
 <p>Select people to add them to the simulation group.</p>
-<form th:action="@{'/simulate'}" th:object="${selectedPeople}" method="post">
-    <input type="submit" value="Go!"/>
-    <a href="javascript:history.back()">Go back</a>
-    <table>
-        <thead>
-        <tr>
-            <th th:text="'Player name'">Player name</th>
-            <th th:text="'Competing score'">Competing score</th>
-            <th th:text="'Compromising score'">Compromising score</th>
-            <th th:text="'Avoiding score'">Avoiding score</th>
-            <th th:text="'Accommodating score'">Accommodating score</th>
-            <th th:text="'Collaborating score'">Collaborating score</th>
-            <th th:text="Add">Add</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="person: ${people}">
-            <td th:text="${person.name}">John Doe</td>
-            <td th:text="${#numbers.formatDecimal(person.competingScore,1,2)}">0.1</td>
-            <td th:text="${#numbers.formatDecimal(person.compromisingScore,1,2)}">0.1</td>
-            <td th:text="${#numbers.formatDecimal(person.avoidingScore,1,2)}">0.1</td>
-            <td th:text="${#numbers.formatDecimal(person.accommodatingScore,1,2)}">0.1</td>
-            <td th:text="${#numbers.formatDecimal(person.collaboratingScore,1,2)}">0.1</td>
-            <td><input type="checkbox" name="select_person" th:value="${person.id}"  /></td>
 
+
+<form action="#" th:action="@{'/simulate'}" th:object="${source}" method="post">
+
+    <table border="1">
+        <tr>
+            <td>Test Name</td>
+            <td th:each="environment : ${environmentList}"
+                th:text="${environment}">Tests</td>
         </tr>
-        </tbody>
+        <th:block th:each="test : ${testList}">
+            <tr>
+                <td th:text="${test.name}">A Test'</td>
+                <th:block th:each="enviro : ${environmentList}">
+                    <td><input type="checkbox" th:field="*{testList}" th:value="|${test.name}-${enviro}|" /></td>
+                </th:block>
+
+            </tr>
+        </th:block>
+
     </table>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
+
+
+
+
+
+
+
+
+
+<!--<form th:action="@{'/simulate'}" th:object="${wrapper}" method="post">-->
+    <!--<input type="submit" value="Go!"/>-->
+    <!--<a href="javascript:history.back()">Go back</a>-->
+
+
+    <!--<table border="1">-->
+        <!--<tr>-->
+            <!--<td>Test Name</td>-->
+            <!--<td th:each="environment : ${environmentList}"-->
+                <!--th:text="${environment}">Tests</td>-->
+        <!--</tr>-->
+        <!--<th:block th:each="test : ${testList}">-->
+            <!--<tr>-->
+                <!--<td th:text="${test.name}">A Test'</td>-->
+                <!--<th:block th:each="enviro : ${environmentList}">-->
+                    <!--<td><input type="checkbox" th:field="*{testList}" th:value="|${test.name}-${enviro}|" /></td>-->
+                <!--</th:block>-->
+
+            <!--</tr>-->
+        <!--</th:block>-->
+
+    <!--</table>-->
+
+<!--<table>-->
+    <!--<tbody>-->
+    <!--<tr th:each="currentMember, stat : ${memberList}">-->
+        <!--<td><input type="checkbox" th:name="|memberList.get(${stat.index}).id|"-->
+                   <!--th:value="${currentMember.id}" th:checked="${currentMember.selected}" /></td>-->
+        <!--<td th:text="${currentMember.name}"></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+<!--</table>-->
+
+    <!--<table>-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<th th:text="'Player name'">Player name</th>-->
+            <!--<th th:text="'Competing score'">Competing score</th>-->
+            <!--<th th:text="'Compromising score'">Compromising score</th>-->
+            <!--<th th:text="'Avoiding score'">Avoiding score</th>-->
+            <!--<th th:text="'Accommodating score'">Accommodating score</th>-->
+            <!--<th th:text="'Collaborating score'">Collaborating score</th>-->
+            <!--<th th:text="Add">Add</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr th:each="person: ${people}">-->
+            <!--<td th:text="${person.name}">John Doe</td>-->
+            <!--<td th:text="${#numbers.formatDecimal(person.competingScore,1,2)}">0.1</td>-->
+            <!--<td th:text="${#numbers.formatDecimal(person.compromisingScore,1,2)}">0.1</td>-->
+            <!--<td th:text="${#numbers.formatDecimal(person.avoidingScore,1,2)}">0.1</td>-->
+            <!--<td th:text="${#numbers.formatDecimal(person.accommodatingScore,1,2)}">0.1</td>-->
+            <!--<td th:text="${#numbers.formatDecimal(person.collaboratingScore,1,2)}">0.1</td>-->
+            <!--<td><input type="checkbox" name="select_person" th:value="${person.id}"  /></td>-->
+
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
 </body>
 </html>

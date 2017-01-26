@@ -31,6 +31,9 @@ public class GroupMember {
     @Transient
     private Double[] VKEAPScores;
 
+    @Transient
+    private boolean selected;
+
     public GroupMember(String name,
                        Double competingScore,
                        Double compromisingScore,
