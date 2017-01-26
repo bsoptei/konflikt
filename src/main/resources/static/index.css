@@ -8,8 +8,6 @@
 
 }
 
-
-
 body{
     width: 800px;
     margin-right: auto;
@@ -19,11 +17,17 @@ body{
 
 }
 
+/*index oldal*/
+
 .image {
     position: center;
     margin: 0 auto;
     padding-left: 150px;
 }
+
+/*index oldal vege*/
+
+/*Navbar*/
 
 .nav{
     width: 100%;
@@ -52,7 +56,6 @@ body{
     display: inline-block;
     padding-right: 50px;
 
-
 }
 
 .nav a {
@@ -72,5 +75,93 @@ body{
     cursor: default;
 }
 
+/*Navbar vege*/
 
 
+/*Add oldal*/
+
+form{
+    margin-top:100px;
+    width:600px;
+
+}
+
+.labelandinput{
+    display:flex;
+
+}
+
+label{
+    font-size: 80%;
+    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+    margin-right: 45px;
+    width:300px;
+
+}
+input{
+   margin-bottom: 10px;
+}
+
+.buttons{
+    border:none;
+    text-decoration:none;
+    font-size:100%;
+    margin:0px;
+    padding:0px;
+    background-color:#eeefe8;
+    margin-left: 80px;
+
+}
+
+.buttons ul{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.buttons li{
+
+    font-size: 1.2em;
+    line-height: 40px;
+    height: 40px;
+    display: inline-block;
+    padding-right: 50px;
+
+
+}
+
+.buttons a{
+    margin-top: 50px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+
+    /*transition: .3s background-color;*/
+}
+
+
+input[type="submit"],
+input[type="reset"]{
+    text-decoration: none;
+    border: none;
+    font-size: 20px;
+    margin: 0 10px;
+    color:inherit;
+    background-color:#eeefe8;
+
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover
+ {
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+a:hover{
+    font-weight: bold;
+
+}
