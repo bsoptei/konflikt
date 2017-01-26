@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -59,22 +58,18 @@ public class KonfliktController {
     @RequestMapping("/simulate")
     public String simulateGet(Model model){
 
-        List<GroupMember> testList = groupMemberService.obtainAllGroupMembers();
+        List<GroupMember> memberList = groupMemberService.obtainAllGroupMembers();
 
         String selectedStatus = "selected";
-        model.addAttribute("testList", testList);
+        model.addAttribute("memberList", memberList);
         model.addAttribute("source", new Source());
         model.addAttribute("selectedStatus", selectedStatus);
-        SimulationForm simulationForm = new SimulationForm();
-        simulationForm.getMemberList().addAll(groupMemberService.obtainAllGroupMembers());
-        model.addAttribute("wrapper", simulationForm);
-//        model.addAttribute("people", groupMemberService.obtainAllGroupMembers());
         return "simulate";
     }
 
     @PostMapping("/simulate")
     public void simulatePut(@ModelAttribute Source source, Model model) {
-        System.out.println(source.getTestList().toString());
+        System.out.println(source.getIdList().toString());
     }
 
     @RequestMapping("/results")

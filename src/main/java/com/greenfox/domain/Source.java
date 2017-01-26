@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Source {
     private String sourceName;
-    private List<String> testList;
+    private List<String> idList;
 
     public String getSourceName()
     {
@@ -19,14 +19,14 @@ public class Source {
         this.sourceName = name;
     }
 
-    public List<String> getTestList()
+    public List<String> getIdList()
     {
-        return testList;
+        return idList;
     }
 
-    public void setTestList(List<String> list)
+    public void setIdList(List<String> list)
     {
-        this.testList = list;
+        this.idList = list;
     }
 
 }
