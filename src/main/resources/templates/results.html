@@ -7,14 +7,14 @@
 <body>
 <table>
     <thead>
-<tr>
-    <th th:text="'Player name'">Player name</th>
-    <th th:text="'Competing score'">Competing score</th>
-    <th th:text="'Compromising score'">Compromising score</th>
-    <th th:text="'Avoiding score'">Avoiding score</th>
-    <th th:text="'Accommodating score'">Accommodating score</th>
-    <th th:text="'Collaborating score'">Collaborating score</th>
-</tr>
+    <tr>
+        <th th:text="'Player name'">Player name</th>
+        <th th:text="'Competing score'">Competing score</th>
+        <th th:text="'Compromising score'">Compromising score</th>
+        <th th:text="'Avoiding score'">Avoiding score</th>
+        <th th:text="'Accommodating score'">Accommodating score</th>
+        <th th:text="'Collaborating score'">Collaborating score</th>
+    </tr>
     </thead>
     <tbody>
     <tr th:each="player: ${players}">
@@ -27,9 +27,17 @@
     </tr>
     </tbody>
 </table>
-<p th:each="solution: ${solutions}">
-    <span th:text="'Key: ' + ${solution.key} + ', Value: ' + ${solution.value}"></span>
-</p>
+<div th:each="solution, iter: ${solutions}">
+
+    <div th:if="${iter.count le 5}" th:text="'Key: ' + ${solution.key} + ', Value: ' + ${solution.value}">
+        <ul th:each="player, iterStat:${players}">
+            <li th:text="${player.name} + ${solution.key.charAt(iterStat.index)}"></li>
+        </ul>
+    </div>
+
+
+
+</div>
 
 <p>suck my dick</p>
 </body>
