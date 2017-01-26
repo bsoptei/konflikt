@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+<tr>
+    <th th:text="'Player name'">Player name</th>
+    <th th:text="'Competing score'">Competing score</th>
+    <th th:text="'Compromising score'">Compromising score</th>
+    <th th:text="'Avoiding score'">Avoiding score</th>
+    <th th:text="'Accommodating score'">Accommodating score</th>
+    <th th:text="'Collaborating score'">Collaborating score</th>
+</tr>
+    </thead>
+    <tbody>
+    <tr th:each="player: ${players}">
+        <td th:text="${player.name}">John Doe</td>
+        <td th:text="${player.VKEAPScores[0]}">0.1</td>
+        <td th:text="${player.VKEAPScores[1]}">0.2</td>
+        <td th:text="${player.VKEAPScores[2]}">0.3</td>
+        <td th:text="${player.VKEAPScores[3]}">0.4</td>
+        <td th:text="${player.VKEAPScores[4]}">0.5</td>
+    </tr>
+    </tbody>
+</table>
+<p th:each="entry: ${test}">
+    <span th:text="'Key: ' + ${entry.key} + ', Value: ' + ${entry.value}"></span>
+</p>
+
+<p>suck my dick</p>
+</body>
+</html>
