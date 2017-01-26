@@ -18,23 +18,13 @@
     <p th:text="${question}"></p>
 
             <div th:each="choice : ${questionnaireForm.CHOICES}" class="radio">
-                <input type="radio" th:value="${choice}"  />
+                <input type="radio" th:value="${choice}" th:name="${'answers[' + iterSat.count + ']'}" />
                 <label th:text="${choice}">Male</label>
             </div>
             <div th:remove="all" class="radio">
                 <input type="radio" />
                 <label>Female</label>
             </div>
-
-
-
-
-
-
-            <!--<label th:for="${iterSat.count} + 'A'" th:text="A">A</label>-->
-            <!--<input  th:name="${answers[iterSat.count]}" th:id="${iterSat.count} + 'A'" type="radio" th:value="|${'A'}|"/>-->
-            <!--<label th:for="${iterSat.count} + 'B'" th:text="B">B</label>-->
-            <!--<input th:name="${iterSat.count}" th:id="${iterSat.count} + 'B'" type="radio" th:field="*{answerList.get(${iterStat.count})}" th:value="|${'B'}|"/>-->
 
         </li>
 
