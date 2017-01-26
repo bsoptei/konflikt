@@ -59,6 +59,15 @@ public class KonfliktController {
         return "redirect:/index";
     }
 
+    @PostMapping("/submit")
+    public String submitPost(@ModelAttribute GroupMember newGroupMember) {
+
+        groupMemberService.normalizeGroupMemberScores(newGroupMember);
+        groupMemberService.saveGroupMember(newGroupMember);
+        return "redirect:/index";
+    }
+
+
     @RequestMapping("/simulate")
     public String simulateGet(Model model) {
         List<GroupMember> memberList = groupMemberService.obtainAllGroupMembers();

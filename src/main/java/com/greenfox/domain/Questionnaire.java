@@ -8,8 +8,7 @@ import java.util.List;
  * Created by Lenovo on 1/26/2017.
  */
 @Data
-public class Source {
+public class Questionnaire {
     private String sourceName;
-    private List<Long> idList;
-
+    private List<Long> answerList;
 }
