@@ -17,8 +17,8 @@ public class Questionnaire {
 
     private final ArrayList<String> questions = new ArrayList<>(Arrays.asList(
             "A. There are times when I let others take responsibility for solving the problem. \n B. Rather than negotiate the things on which we disagree, I try to stress those things upon which we both agree.",
-    "A. I try to find a compromise solution. \n B. I attempt to deal with all of his/her and my concerns.",
-    "A. I am usually firm in pursuing my goals.\n B. I might try to soothe the other's feelings and preserve our relationship.",
+            "A. I try to find a compromise solution. \n B. I attempt to deal with all of his/her and my concerns.",
+            "A. I am usually firm in pursuing my goals.\n B. I might try to soothe the other's feelings and preserve our relationship.",
             "A. I try to find a compromise solution.\n" +
                     "B. I sometimes sacrifice my own wishes for the wishes of the other person.",
             "A. I consistently seek the other's help in working out a solution.\n" +
@@ -68,8 +68,8 @@ public class Questionnaire {
                     "B. I am nearly always concerned with satisfying all our wishes.",
             "A. I sometimes avoid taking positions that would create controversy.\n" +
                     "B. If it makes other people happy, I might let them maintain their views.",
-    "A. I am usually firm in pursuing my goals. \n B. I usually seek the other's help in working out a solution.",
-    "A. I propose a middle ground. \n B. I feel that differences are not always worth worrying about.",
-    "A. I try not to hurt the other's feelings. \n B. I always share a problem with the other person so that we can work it out."
+            "A. I am usually firm in pursuing my goals. \n B. I usually seek the other's help in working out a solution.",
+            "A. I propose a middle ground. \n B. I feel that differences are not always worth worrying about.",
+            "A. I try not to hurt the other's feelings. \n B. I always share a problem with the other person so that we can work it out."
     ));
 }

@@ -41,4 +41,13 @@ public class GroupMemberService {
         }
         return simulationGroup;
     }
+
+    public void adjustMemberScores(Double[] VKEAPScoresFromQuestionnaire,
+                                          GroupMember newGroupMember) {
+        newGroupMember.setCompetingScore(VKEAPScoresFromQuestionnaire[0]);
+        newGroupMember.setCompromisingScore(VKEAPScoresFromQuestionnaire[1]);
+        newGroupMember.setAvoidingScore(VKEAPScoresFromQuestionnaire[2]);
+        newGroupMember.setAccommodatingScore(VKEAPScoresFromQuestionnaire[3]);
+        newGroupMember.setCollaboratingScore(VKEAPScoresFromQuestionnaire[4]);
+    }
 }

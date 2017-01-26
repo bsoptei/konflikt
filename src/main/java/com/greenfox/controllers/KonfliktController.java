@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -67,10 +66,20 @@ public class KonfliktController {
 
     @PostMapping("/submit")
     public String submitPost(@ModelAttribute Questionnaire questionnaire) {
-        System.out.println(Arrays.toString(questionnaireService.evaluateAnswers(questionnaire.getAnswers())));
+        Double[] VKEAPScoresFromQuestionnaire = questionnaireService.evaluateAnswers(questionnaire.getAnswers());
+        GroupMember newGroupMember = new GroupMember();
+        newGroupMember.setName(questionnaire.getPersonName());
+        groupMemberService.adjustMemberScores(VKEAPScoresFromQuestionnaire, newGroupMember);
+        groupMemberService.normalizeGroupMemberScores(newGroupMember);
+        groupMemberService.saveGroupMember(newGroupMember);
 
-//
-//        System.out.println(Arrays.toString(questionnaire.getAnswers()));
+
+
+
+
+
+
+        //        System.out.println(Arrays.toString(questionnaire.getAnswers()));
 //        System.out.println(questionnaire.getAnswers().length);
 //        System.out.println(questionnaire.getPersonName());
         return "redirect:/index";
