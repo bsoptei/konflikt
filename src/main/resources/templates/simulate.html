@@ -7,7 +7,7 @@
 <body>
 <h1>Hello!</h1>
 <p>Select people to add them to the simulation group.</p>
-<form>
+<form th:action="@{'/simulate'}" th:object="${selectedPeople}" method="post">
     <input type="submit" value="Go!"/>
     <a href="javascript:history.back()">Go back</a>
     <table>
@@ -30,7 +30,8 @@
             <td th:text="${#numbers.formatDecimal(person.avoidingScore,1,2)}">0.1</td>
             <td th:text="${#numbers.formatDecimal(person.accommodatingScore,1,2)}">0.1</td>
             <td th:text="${#numbers.formatDecimal(person.collaboratingScore,1,2)}">0.1</td>
-            <td><input type="checkbox" name="select_person" value="true"/></td>
+            <td><input type="checkbox" name="select_person" th:value="${person.id}"  /></td>
+
         </tr>
         </tbody>
     </table>

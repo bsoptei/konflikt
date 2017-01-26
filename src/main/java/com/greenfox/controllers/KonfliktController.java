@@ -1,6 +1,7 @@
 package com.greenfox.controllers;
 
 import com.greenfox.domain.GroupMember;
+import com.greenfox.domain.SimulationForm;
 import com.greenfox.service.GroupMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -54,8 +56,14 @@ public class KonfliktController {
 
     @RequestMapping("/simulate")
     public String simulateGet(Model model){
+        model.addAttribute("selectedPeople", new ArrayList<Double>());
         model.addAttribute("people", groupMemberService.obtainAllGroupMembers());
         return "simulate";
+    }
+
+    @PostMapping("/simulate")
+    public void simulatePut(@ModelAttribute SimulationForm simulationForm) {
+        System.out.println(simulationForm);
     }
 
     @RequestMapping("/results")
