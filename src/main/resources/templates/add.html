@@ -15,8 +15,8 @@
 </div>
 </header>
 <body>
-<form>
-<div action="#" th:action="@{'/add'}" th:object="${groupMember}" method="post">
+<form  action="#" th:action="@{'/add'}" th:object="${groupMember}" method="post">
+<div>
     <div class="labelandinput">
     <label for="content" th:text="'Name'">Name</label>
     <input id="content" type="text" th:field="*{name}" th:required="required" required="true"/>
