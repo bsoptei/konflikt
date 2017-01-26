@@ -4,6 +4,7 @@ import com.greenfox.domain.GroupMember;
 import com.greenfox.domain.Questionnaire;
 import com.greenfox.domain.Source;
 import com.greenfox.service.GroupMemberService;
+import com.greenfox.service.QuestionnaireService;
 import com.greenfox.service.SimulationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,7 @@ public class KonfliktController {
 
     private GroupMemberService groupMemberService;
     private SimulationService simulationService;
+    private QuestionnaireService questionnaireService;
 
     private HashMap<Character, String> strategyNames = new HashMap<Character, String>() {{
         put('V', "Competing");
@@ -38,9 +40,11 @@ public class KonfliktController {
 
     @Autowired
     public KonfliktController(GroupMemberService groupMemberService,
-                              SimulationService simulationService) {
+                              SimulationService simulationService,
+                              QuestionnaireService questionnaireService) {
         this.groupMemberService = groupMemberService;
         this.simulationService = simulationService;
+        this.questionnaireService = questionnaireService;
     }
 
     @RequestMapping({"/", "/home", "/index"})
@@ -63,16 +67,18 @@ public class KonfliktController {
 
     @PostMapping("/submit")
     public String submitPost(@ModelAttribute Questionnaire questionnaire) {
-        System.out.println(Arrays.toString(questionnaire.getAnswers()));
-        System.out.println(questionnaire.getAnswers().length);
-        System.out.println(questionnaire.getPersonName());
+        System.out.println(Arrays.toString(questionnaireService.evaluateAnswers(questionnaire.getAnswers())));
+
+//
+//        System.out.println(Arrays.toString(questionnaire.getAnswers()));
+//        System.out.println(questionnaire.getAnswers().length);
+//        System.out.println(questionnaire.getPersonName());
         return "redirect:/index";
     }
 
     @RequestMapping("/fill")
     public String fillGet(Model model){
         model.addAttribute("questionnaireForm", new Questionnaire());
-
         return "questionnaire";
     }
 
