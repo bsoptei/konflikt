@@ -64,6 +64,8 @@ public class KonfliktController {
     @PostMapping("/submit")
     public String submitPost(@ModelAttribute Questionnaire questionnaire) {
         System.out.println(Arrays.toString(questionnaire.getAnswers()));
+        System.out.println(questionnaire.getAnswers().length);
+        System.out.println(questionnaire.getPersonName());
         return "redirect:/index";
     }
 

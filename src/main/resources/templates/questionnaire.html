@@ -13,6 +13,10 @@
     <input type="submit" value="Go!"/>
     <input type="reset" value="Start over"/>
     <a href="javascript:history.back()">Cancel</a>
+
+    <label for="content" th:text="'Name:'">Name:</label>
+    <input id="content" type="text" th:field="*{personName}" th:required="required" required="true"/>
+
     <ol >
         <li th:each="question, iterSat : ${questionnaireForm.questions}">
     <p th:text="${question}"></p>

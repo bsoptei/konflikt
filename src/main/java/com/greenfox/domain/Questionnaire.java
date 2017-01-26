@@ -4,7 +4,6 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by Lenovo on 1/26/2017.
@@ -13,6 +12,7 @@ import java.util.List;
 public class Questionnaire {
     private String sourceName;
     private String[] answers;
+    private String personName;
     private final ArrayList<String> CHOICES = new ArrayList<>(Arrays.asList("A", "B"));
 
     private final ArrayList<String> questions = new ArrayList<>(Arrays.asList(
