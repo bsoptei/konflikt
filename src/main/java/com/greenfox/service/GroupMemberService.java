@@ -1,10 +1,12 @@
 package com.greenfox.service;
 
 import com.greenfox.domain.GroupMember;
+import com.greenfox.domain.Source;
 import com.greenfox.repository.GroupMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,5 +32,13 @@ public class GroupMemberService {
 
     public void normalizeGroupMemberScores(GroupMember myGroupMember) {
         myGroupMember.normalizeScores();
+    }
+
+    public ArrayList<GroupMember> generateSimulationGroup(Source source) {
+        ArrayList<GroupMember> simulationGroup = new ArrayList<>();
+        for (Long id : source.getIdList()) {
+            simulationGroup.add(groupMemberRepository.findOne(id));
+        }
+        return simulationGroup;
     }
 }
