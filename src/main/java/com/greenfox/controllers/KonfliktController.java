@@ -72,16 +72,6 @@ public class KonfliktController {
         groupMemberService.adjustMemberScores(VKEAPScoresFromQuestionnaire, newGroupMember);
         groupMemberService.normalizeGroupMemberScores(newGroupMember);
         groupMemberService.saveGroupMember(newGroupMember);
-
-
-
-
-
-
-
-        //        System.out.println(Arrays.toString(questionnaire.getAnswers()));
-//        System.out.println(questionnaire.getAnswers().length);
-//        System.out.println(questionnaire.getPersonName());
         return "redirect:/index";
     }
 
