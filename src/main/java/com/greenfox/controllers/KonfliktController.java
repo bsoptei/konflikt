@@ -1,6 +1,7 @@
 package com.greenfox.controllers;
 
 import com.greenfox.domain.GroupMember;
+import com.greenfox.domain.Questionnaire;
 import com.greenfox.domain.Source;
 import com.greenfox.service.GroupMemberService;
 import com.greenfox.service.SimulationService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -60,13 +62,17 @@ public class KonfliktController {
     }
 
     @PostMapping("/submit")
-    public String submitPost(@ModelAttribute GroupMember newGroupMember) {
-
-        groupMemberService.normalizeGroupMemberScores(newGroupMember);
-        groupMemberService.saveGroupMember(newGroupMember);
+    public String submitPost(@ModelAttribute Questionnaire questionnaire) {
+        System.out.println(Arrays.toString(questionnaire.getAnswers()));
         return "redirect:/index";
     }
 
+    @RequestMapping("/fill")
+    public String fillGet(Model model){
+        model.addAttribute("questionnaireForm", new Questionnaire());
+
+        return "questionnaire";
+    }
 
     @RequestMapping("/simulate")
     public String simulateGet(Model model) {

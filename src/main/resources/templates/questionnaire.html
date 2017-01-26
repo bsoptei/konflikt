@@ -9,37 +9,36 @@
 <p>Select people to add them to the simulation group.</p>
 
 
-<form action="#" th:action="@{'/simulate'}" th:object="${source}" method="post">
-    <input type="submit" value="Go!" />
-    <input type="reset" value="Start over" />
+<form action="#" th:action="@{'/submit'}" th:object="${questionnaireForm}" method="post">
+    <input type="submit" value="Go!"/>
+    <input type="reset" value="Start over"/>
     <a href="javascript:history.back()">Cancel</a>
+    <ol >
+        <li th:each="question, iterSat : ${questionnaireForm.questions}">
+    <p th:text="${question}"></p>
 
-    <table >
-        <thead>
-        <tr>
-            <th th:text="'Player name'">Player name</th>
-            <th th:text="'Competing score'">Competing score</th>
-            <th th:text="'Compromising score'">Compromising score</th>
-            <th th:text="'Avoiding score'">Avoiding score</th>
-            <th th:text="'Accommodating score'">Accommodating score</th>
-            <th th:text="'Collaborating score'">Collaborating score</th>
-            <th th:text="'Select'">Select</th>
-        </tr>
-        </thead>
-        <th:block th:each="member : ${memberList}">
-            <tr>
-                <td th:text="${member.name}">John Doe</td>
-                <td th:text="${#numbers.formatDecimal(member.competingScore,1,2)}">0.1</td>
-                <td th:text="${#numbers.formatDecimal(member.compromisingScore,1,2)}">0.1</td>
-                <td th:text="${#numbers.formatDecimal(member.avoidingScore,1,2)}">0.1</td>
-                <td th:text="${#numbers.formatDecimal(member.accommodatingScore,1,2)}">0.1</td>
-                <td th:text="${#numbers.formatDecimal(member.collaboratingScore,1,2)}">0.1</td>
-                <td><input type="checkbox" th:field="*{idList}" th:value="|${member.id}|" /></td>
+            <div th:each="choice : ${questionnaireForm.CHOICES}" class="radio">
+                <input type="radio" th:value="${choice}"  />
+                <label th:text="${choice}">Male</label>
+            </div>
+            <div th:remove="all" class="radio">
+                <input type="radio" />
+                <label>Female</label>
+            </div>
 
-            </tr>
-        </th:block>
 
-    </table>
+
+
+
+
+            <!--<label th:for="${iterSat.count} + 'A'" th:text="A">A</label>-->
+            <!--<input  th:name="${answers[iterSat.count]}" th:id="${iterSat.count} + 'A'" type="radio" th:value="|${'A'}|"/>-->
+            <!--<label th:for="${iterSat.count} + 'B'" th:text="B">B</label>-->
+            <!--<input th:name="${iterSat.count}" th:id="${iterSat.count} + 'B'" type="radio" th:field="*{answerList.get(${iterStat.count})}" th:value="|${'B'}|"/>-->
+
+        </li>
+
+    </ol>
 </form>
 
 </body>
