@@ -29,16 +29,16 @@
 </table>
 <div th:each="solution, iter: ${solutions}">
 
-    <div th:if="${iter.count le 5}" th:text="'Key: ' + ${solution.key} + ', Value: ' + ${solution.value}">
+    <ul th:if="${iter.count le 5}" >
+        <li th:text="'Key: ' + ${solution.key} + ', Value: ' + ${solution.value}"></li>
+        <li>
         <ul th:each="player, iterStat:${players}">
             <li th:text="${player.name} + ${solution.key.charAt(iterStat.index)}"></li>
         </ul>
-    </div>
-
-
-
+        </li>
+    </ul>
+    
 </div>
 
-<p>suck my dick</p>
 </body>
 </html>
