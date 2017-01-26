@@ -1,15 +1,16 @@
 package com.greenfox.controllers;
 
-import com.greenfox.domain.PlayerInConflict;
-import com.greenfox.domain.ResolutionFinder;
+import com.greenfox.domain.GroupMember;
+import com.greenfox.service.GroupMemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -17,12 +18,8 @@ import java.util.HashMap;
  */
 @Controller
 public class KonfliktController {
-    private ArrayList<PlayerInConflict> players = new ArrayList<>(Arrays.asList(
-            new PlayerInConflict("Joe", new Double[]{0.1, 0.2, 0.1, 0.4, 0.1}),
-            new PlayerInConflict("Jane", new Double[]{0.05, 0.05, 0.5, 0.2, 0.2}),
-            new PlayerInConflict("Judith", new Double[]{0.4, 0.3, 0.2, 0.1, 0.1}),
-            new PlayerInConflict("Jeremiah", new Double[]{0.1, 0.2, 0.2, 0.2, 0.4})
-    ));
+
+    private final GroupMemberService groupMemberService;
 
     private HashMap<Character, String> strategyNames = new HashMap<Character,String>(){{
         put('V',"Competing");
@@ -32,12 +29,37 @@ public class KonfliktController {
         put('P',"Collaborating");
     }};
 
+    @Autowired
+    public KonfliktController(GroupMemberService groupMemberService) {
+        this.groupMemberService = groupMemberService;
+    }
+
+    @RequestMapping({"/" , "/home", "/index"})
+    public String home(){
+        return "index";
+    }
+
+    @RequestMapping("/add")
+    public String addGet(Model model){
+        model.addAttribute("groupMember", new GroupMember());
+        return "add";
+    }
+
+    @PostMapping("/add")
+    public String addPost(@ModelAttribute GroupMember newGroupMember){
+        groupMemberService.normalizeGroupMemberScores(newGroupMember);
+        groupMemberService.saveGroupMember(newGroupMember);
+        return "redirect:/index";
+    }
+
+    @RequestMapping("/simulate")
+    public String simulateGet(Model model){
+        model.addAttribute("people", groupMemberService.obtainAllGroupMembers());
+        return "simulate";
+    }
+
     @RequestMapping("/results")
     public String showResults(Model model){
-        ResolutionFinder myResolutionFinder = new ResolutionFinder(players);
-        model.addAttribute("players", players);
-        model.addAttribute("strategyNames",strategyNames);
-        model.addAttribute("solutions",myResolutionFinder.generateSolutionsWithProbabilities());
         return "results";
     }
 

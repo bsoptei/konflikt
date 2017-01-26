@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{'/add'}" th:object="${groupMember}" method="post">
+    <label for="content" th:text="'Name:'">Name:</label>
+    <input id="content" type="text" th:field="*{name}" th:required="required" required="true"/>
+
+    <label for="competingScore" th:text="'Competing score:'">Competing score:</label>
+    <input id="competingScore" type="number" step="0.01" th:field="*{competingScore}" th:required="required" required="true"/>
+
+    <label for="compromisingScore" th:text="'Compromising score:'">Compromising score:</label>
+    <input id="compromisingScore" type="number" step="0.01" th:field="*{compromisingScore}" th:required="required" required="true"/>
+
+    <label for="avoidingScore" th:text="'Avoiding score:'">Avoiding score:</label>
+    <input id="avoidingScore" type="number" step="0.01" th:field="*{avoidingScore}" th:required="required" required="true"/>
+
+    <label for="accommodatingScore" th:text="'Accommodating score:'">Accommodating score:</label>
+    <input id="accommodatingScore" type="number" step="0.01" th:field="*{accommodatingScore}" th:required="required" required="true"/>
+
+    <label for="collaboratingScore" th:text="'Collaborating score:'">Collaborating score:</label>
+    <input id="collaboratingScore" type="number" step="0.01" th:field="*{collaboratingScore}" th:required="required" required="true"/>
+
+    <input type="submit" value="Submit"/>
+    <input type="reset" value="Reset"/>
+    <a href="javascript:history.back()">Cancel</a>
+</form>
+
+</body>
+</html>

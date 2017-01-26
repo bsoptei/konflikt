@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
  * Created by Lenovo on 1/25/2017.
  */
 public class ResolutionFinder {
-    private ArrayList<PlayerInConflict> groupOfPlayers;
+    private ArrayList<GroupMember> groupOfPlayers;
     private Integer groupSize;
 
-    public ResolutionFinder(ArrayList<PlayerInConflict> groupOfPlayers) {
+    public ResolutionFinder(ArrayList<GroupMember> groupOfPlayers) {
         this.groupOfPlayers = groupOfPlayers;
         this.groupSize = groupOfPlayers.size();
     }
@@ -30,7 +30,7 @@ public class ResolutionFinder {
         for (String solution : solutions) {
             Double weightedProbability = 0.000;
             for (int i = 0; i < solution.length(); i++) {
-                PlayerInConflict currentPlayer = groupOfPlayers.get(i);
+                GroupMember currentPlayer = groupOfPlayers.get(i);
                 weightedProbability += (1 / Double.valueOf(groupSize)) * currentPlayer.obtainStrategyProbability(solution.substring(i, i + 1));
             }
             solutionsWithProbabilities.put(solution, weightedProbability);
