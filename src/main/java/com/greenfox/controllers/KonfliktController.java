@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Lenovo on 1/26/2017.
@@ -71,11 +70,15 @@ public class KonfliktController {
     }
 
     @PostMapping("/simulate")
-    public String simulatePut(@ModelAttribute Source source, Model model) {
-        ArrayList<GroupMember> simulationGroup = groupMemberService.generateSimulationGroup(source);
-        simulationService.setGroupMembers(simulationGroup);
-        simulationService.generateSimulationResults();
-        return "redirect:/results";
+    public String simulatePut(@ModelAttribute Source source) {
+        if (source.getIdList().size() > 1) {
+            ArrayList<GroupMember> simulationGroup = groupMemberService.generateSimulationGroup(source);
+            simulationService.setGroupMembers(simulationGroup);
+            simulationService.generateSimulationResults();
+            return "redirect:/results";
+        } else {
+            return "redirect:/index";
+        }
     }
 
     @RequestMapping("/results")

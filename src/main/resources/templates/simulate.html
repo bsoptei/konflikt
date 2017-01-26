@@ -15,6 +15,17 @@
     <a href="javascript:history.back()">Cancel</a>
 
     <table >
+        <thead>
+        <tr>
+            <th th:text="'Player name'">Player name</th>
+            <th th:text="'Competing score'">Competing score</th>
+            <th th:text="'Compromising score'">Compromising score</th>
+            <th th:text="'Avoiding score'">Avoiding score</th>
+            <th th:text="'Accommodating score'">Accommodating score</th>
+            <th th:text="'Collaborating score'">Collaborating score</th>
+            <th th:text="'Select'">Select</th>
+        </tr>
+        </thead>
         <th:block th:each="member : ${memberList}">
             <tr>
                 <td th:text="${member.name}">John Doe</td>

@@ -26,62 +26,46 @@ public class GroupMember {
     private Double collaboratingScore;
 
     @Transient
-    private Map<String, Double> conflictStrategies = new HashMap<>();
-
+    private Map<String, Double> conflictStrategies;
     @Transient
     private Double[] VKEAPScores;
-
     @Transient
     private boolean selected;
-
     @Transient
     private Double sumOfScores;
 
-    public GroupMember(String name,
-                       Double competingScore,
-                       Double compromisingScore,
-                       Double avoidingScore,
-                       Double accommodatingScore,
-                       Double collaboratingScore) {
-        this.name = name;
-        Double sum = competingScore + compromisingScore + avoidingScore + accommodatingScore + collaboratingScore;
-        this.competingScore = competingScore / sum;
-        this.compromisingScore = compromisingScore / sum;
-        this.avoidingScore = avoidingScore / sum;
-        this.accommodatingScore = accommodatingScore / sum;
-        this.collaboratingScore = collaboratingScore / sum;
-
-
-        normalizeScores();
-    }
-
-    public GroupMember(String name, Double[] VKEAPScores) {
-        this.name = name;
-        this.VKEAPScores = VKEAPScores;
-        normalizeScores();
-    }
-
     public void normalizeScores() {
+        sumOfScores = calculateSumOfScores();
+        this.competingScore = competingScore / sumOfScores;
+        this.compromisingScore = compromisingScore / sumOfScores;
+        this.avoidingScore = avoidingScore / sumOfScores;
+        this.accommodatingScore = accommodatingScore / sumOfScores;
+        this.collaboratingScore = collaboratingScore / sumOfScores;
+    }
+
+    private Double calculateSumOfScores() {
+        return competingScore + compromisingScore + avoidingScore + accommodatingScore + collaboratingScore;
+    }
+
+    private void generateVKEAPScores(){
         this.VKEAPScores = new Double[] {this.competingScore,
                 this.compromisingScore,this.avoidingScore, this.accommodatingScore, this.collaboratingScore};
-        sumOfScores = VKEAPScores[0] + VKEAPScores[1] + VKEAPScores[2] + VKEAPScores[3] + VKEAPScores[4];
-
     }
 
     private void generateConflictStrategies(){
-        normalizeScores();
+        generateVKEAPScores();
+        conflictStrategies = new HashMap<>();
         for (int i = 0; i < VKEAPScores.length; i++) {
-            this.conflictStrategies.put(TKRuleSet.strategies.get(i), VKEAPScores[i] / sumOfScores);
+            this.conflictStrategies.put(TKRuleSet.strategies.get(i), VKEAPScores[i]);
         }
     }
 
 
-    public Double obtainStrategyProbability(String strategy) {
+    Double obtainStrategyProbability(String strategy) {
         if (conflictStrategies == null || conflictStrategies.size() == 0) {
             generateConflictStrategies();
         }
         return conflictStrategies.get(strategy);
     }
-
 
 }

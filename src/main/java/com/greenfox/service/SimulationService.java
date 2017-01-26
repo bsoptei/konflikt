@@ -2,9 +2,7 @@ package com.greenfox.service;
 
 import com.greenfox.domain.GroupMember;
 import com.greenfox.domain.ResolutionFinder;
-import com.greenfox.domain.TKRuleSet;
 import lombok.Data;
-import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
