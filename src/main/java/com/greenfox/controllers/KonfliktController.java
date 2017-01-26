@@ -27,7 +27,7 @@ public class KonfliktController {
     public String showResults(Model model){
         ResolutionFinder myResolutionFinder = new ResolutionFinder(players);
         model.addAttribute("players", players);
-        model.addAttribute("results",myResolutionFinder.generateSolutionsWithProbabilities());
+        model.addAttribute("solutions",myResolutionFinder.generateSolutionsWithProbabilities());
         return "results";
     }
 
