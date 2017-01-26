@@ -71,21 +71,18 @@ public class KonfliktController {
     }
 
     @PostMapping("/simulate")
-    public void simulatePut(@ModelAttribute Source source, Model model) {
-
-        // TODO do simulation!!!!
+    public String simulatePut(@ModelAttribute Source source, Model model) {
         ArrayList<GroupMember> simulationGroup = groupMemberService.generateSimulationGroup(source);
-        Map<String, Double> simulationResults = simulationService.generateSimulationResults(simulationGroup);
-        //        Map<String, Double> simulationResults =
-//                simulationService.generateSimulationResults(groupMemberService.generateSimulationGroup(source));
-//        System.out.println(simulationResults);
+        simulationService.setGroupMembers(simulationGroup);
+        simulationService.generateSimulationResults();
+        return "redirect:/results";
     }
 
     @RequestMapping("/results")
     public String showResults(Model model) {
-//        ResolutionFinder myResolutionFinder = new ResolutionFinder(players);
-//        model.addAttribute("players", players);
-//        model.addAttribute("results",myResolutionFinder.generateSolutionsWithProbabilities());
+        model.addAttribute("players", simulationService.getGroupMembers());
+        model.addAttribute("solutions",simulationService.getSimulationResults());
+        model.addAttribute("strategyNames", strategyNames);
         return "results";
     }
 
