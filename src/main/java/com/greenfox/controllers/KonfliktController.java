@@ -111,6 +111,11 @@ public class KonfliktController {
         return "results";
     }
 
+    @RequestMapping("/faq")
+    public String frequentlyAskedQuestions(){
+        return "faq";
+    }
+
     @RequestMapping("/easter")
     @ResponseBody
     public HttpStatus easter() {
