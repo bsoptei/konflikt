@@ -11,18 +11,11 @@
 
 <form action="#" th:action="@{'/simulate'}" th:object="${source}" method="post">
 
-    <table border="1">
-        <tr>
-            <td>Test Name</td>
-            <td th:each="environment : ${environmentList}"
-                th:text="${environment}">Tests</td>
-        </tr>
+    <table >
         <th:block th:each="test : ${testList}">
             <tr>
                 <td th:text="${test.name}">A Test'</td>
-                <th:block th:each="enviro : ${environmentList}">
-                    <td><input type="checkbox" th:field="*{testList}" th:value="|${test.name}-${enviro}|" /></td>
-                </th:block>
+                    <td><input type="checkbox" th:field="*{testList}" th:value="|${test.id}|" /></td>
 
             </tr>
         </th:block>

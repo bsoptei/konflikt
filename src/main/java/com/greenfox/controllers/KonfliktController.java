@@ -60,14 +60,11 @@ public class KonfliktController {
     public String simulateGet(Model model){
 
         List<GroupMember> testList = groupMemberService.obtainAllGroupMembers();
-        String[] environmentList = new String[5];
-        for(int i = 0; i < 5; i++)
-        {
-            environmentList[i] = "afsfaf";
-        }
+
+        String selectedStatus = "selected";
         model.addAttribute("testList", testList);
         model.addAttribute("source", new Source());
-        model.addAttribute("environmentList", environmentList);
+        model.addAttribute("selectedStatus", selectedStatus);
         SimulationForm simulationForm = new SimulationForm();
         simulationForm.getMemberList().addAll(groupMemberService.obtainAllGroupMembers());
         model.addAttribute("wrapper", simulationForm);
