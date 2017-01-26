@@ -2,11 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <link rel="stylesheet" type ="text/css" href= "/static/index.css"/>
+    <title>Index</title>
 </head>
+
+<header>
+<div class="nav" >
+<ul>
+<li><a href="#" th:href="@{'/add'}">Add new person</a></li>
+<li><a href="#" th:href="@{'/simulate'}">Simulate!</a></li>
+<li><a href="#" th:href="@{'/faq'}">FAQ</a></li>
+</ul>
+</div>
+</header>
 <body>
-<h1>Hello!</h1>
-<a href="#" th:href="@{'/add'}">Add new person</a>
-<a href="#" th:href="@{'/simulate'}">Simulate!</a>
+
+<img src="https://mayrsom.files.wordpress.com/2015/10/competitors_get_ready_500_clr_11159.gif" />
+<p>Konflikt is an algorithmic simulation of the highly acknowledged Thomas Kilmann Conflict Mode Instrument model. The simulation can be run on <em>n</em> number of people and will always end is resolving the conflict. The individual startegies applied in resolving the conflict is quantified , therefore we can deduce a real probability of the occurence of peace. If you want to know more check out the FAQ.</p>
 </body>
 </html>
