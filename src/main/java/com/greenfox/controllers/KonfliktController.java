@@ -57,9 +57,7 @@ public class KonfliktController {
 
     @RequestMapping("/simulate")
     public String simulateGet(Model model){
-
         List<GroupMember> memberList = groupMemberService.obtainAllGroupMembers();
-
         String selectedStatus = "selected";
         model.addAttribute("memberList", memberList);
         model.addAttribute("source", new Source());

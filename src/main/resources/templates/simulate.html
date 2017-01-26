@@ -10,6 +10,9 @@
 
 
 <form action="#" th:action="@{'/simulate'}" th:object="${source}" method="post">
+    <input type="submit" value="Go!" />
+    <input type="reset" value="Start over" />
+    <a href="javascript:history.back()">Cancel</a>
 
     <table >
         <th:block th:each="member : ${memberList}">
@@ -26,7 +29,6 @@
         </th:block>
 
     </table>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 
 </body>
