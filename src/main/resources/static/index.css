@@ -218,3 +218,30 @@ table th.last {
     text-decoration:none;
     font-size: inherit;
 }
+
+/*Simulate oldal vege*/
+
+/*Results oldal*/
+
+.innertable {
+    width:30px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    border: none;
+    border-bottom: none;
+    box-shadow: none;
+    padding-top:100px;
+
+}
+
+.wrappertable{
+    margin-top:150px;
+}
+
+/*.result{*/
+    /*list-style: none;*/
+/*}*/

@@ -7,9 +7,17 @@
 
 </head>
 <body>
-<a href="#" th:href="@{'/index'}">Back to main page</a>
-<a href="#" th:href="@{'/simulate'}">Run another simulation</a>
-<table>
+<header>
+    <div class="nav">
+        <ul>
+            <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
+            <li><a href="#" th:href="@{'/simulate'}">Simulate</a></li>
+            <li><a href="#" th:href="@{'/faq'}">FAQ</a></li>
+        </ul>
+    </div>
+</header>
+<main>
+<table class="wrappertable">
     <thead>
     <tr>
         <th th:text="'Player name'">Player name</th>
@@ -24,7 +32,7 @@
     <tr th:each="player: ${players}">
         <td th:text="${player.firstName} + ' ' + ${player.lastName}">John Doe</td>
         <td th:each="score, scoreIndex: ${player.VKEAPScores}">
-        <table>
+        <table class="innertable" >
             <tr>
         <td th:text="${#numbers.formatDecimal(player.VKEAPScores[scoreIndex.index],1,2)}">0.1</td>
             </tr>
@@ -47,5 +55,7 @@
 
 </div>
 
+<a href="#" th:href="@{'/simulate'}">Run another simulation</a>
+</main>
 </body>
 </html>
