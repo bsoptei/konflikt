@@ -249,6 +249,42 @@ table th.last {
     margin-top:150px;
 }
 
-/*.result{*/
-    /*list-style: none;*/
-/*}*/
+.resultlist{
+    list-style: none;
+    margin: 50px auto 10px -200px;
+}
+
+/*Result oldal vege*/
+
+/*Faq oldal*/
+
+.faq p{
+    margin-top:30px;
+}
+
+.faq img{
+    width:120%;
+    height:auto;
+
+}
+.faq ul, .faq li{
+    list-style: none;
+}
+
+.faq h1{
+    margin-left:-200px;
+    margin-top:50px;
+}
+
+.insidelist li{
+    margin-left: -200px;
+    font-size: 70%;
+}
+.faq .funky_anchor{
+    font-size: 85%;
+
+}
+#returnanchor{
+    font-size: 70%;
+    margin-left: -200px;
+}

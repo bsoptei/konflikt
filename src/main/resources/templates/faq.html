@@ -7,28 +7,38 @@
 </head>
 
 <body>
-<main>
+<header>
+    <nav >
+        <ul>
+            <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
+            <li><a href="#" th:href="@{'/simulate'}">Simulate</a></li>
+            <li><a href="#" th:href="@{'/faq'}">FAQ</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="faq">
+    <h1>FAQ</h1>
     <ul>
         <li>
-            <p>Q: What is the Thomas-Kilmann Model?</p>
+            <p><b>Q: What is the Thomas-Kilmann Model?</b></p>
             <p>A: <a class="funky_anchor" href="http://www.kilmanndiagnostics.com/overview-thomas-kilmann-conflict-mode-instrument-tki">Read
                 about it here</a></p>
         </li>
         <li>
-            <p>Q: What should I expect?</p>
+            <p><b>Q: What should I expect?</b></p>
             <p>A: In the background, players play their game like this:</p>
             <iframe src="//giphy.com/embed/cPb9aJFaQhJgQ?html5=true" width="480" height="370" frameBorder="0" class="giphy-embed" ></iframe>
-            <p><a class="funky_anchor" href="http://giphy.com/gifs/cPb9aJFaQhJgQ">via GIPHY</a></p>
+
             <p>Actually, you get the data of the most probable situation of conflict resolution, including:</p>
-            <ul>
+            <ul class="insidelist">
                 <li>A weighted average score of the situation.</li>
                 <li>The chosen strategy of each player.</li>
             </ul>
         </li>
         <li>
-            <p>Q: How does this work?</p>
+            <p><b>Q: How does this work?</b></p>
             <p>A: The conflict simulation is based on compatible strategies (see table). The assumptions behind the algorithm are the following:</p>
-            <ul>
+            <ul class="insidelist">
                 <li>All conflicts are resolved.</li>
                 <li>Conflicts are non-zero-sum games.</li>
                 <li>Players are motivated to solve the conflict.</li>
@@ -91,11 +101,11 @@
             <img src="/images/logic.png" />
         </li>
         <li>
-            <p>Q: How many players can the simulation work with?</p>
+            <p><b>Q: How many players can the simulation work with?</b></p>
             <p>A: Minimum 2 players, the maximum is yet to be tested.</p>
         </li>
     </ul>
-    <a class="funky_anchor" href="#" th:href="@{'/index'}">[Go back to main page]</a>
+    <a id="returnanchor" class="funky_anchor" href="#" th:href="@{'/index'}">[Go back to main page]</a>
 </main>
 </body>
 </html>
