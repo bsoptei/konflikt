@@ -26,7 +26,8 @@
     <table >
         <thead>
         <tr>
-            <th th:text="'Player name'">Player name</th>
+            <th th:text="'First Name'">Player name</th>
+            <th th:text="'Last Name'">Player name</th>
             <th th:text="'Competing score'">Competing score</th>
             <th th:text="'Compromising score'">Compromising score</th>
             <th th:text="'Avoiding score'">Avoiding score</th>
@@ -37,7 +38,8 @@
         </thead>
         <th:block th:each="member : ${memberList}">
             <tr>
-                <td th:text="${member.name}">John Doe</td>
+                <td th:text="${member.firstName}">John</td>
+                <td th:text="${member.lastName}">Doe</td>
                 <td th:text="${#numbers.formatDecimal(member.competingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.compromisingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.avoidingScore,1,2)}">0.1</td>
@@ -50,10 +52,11 @@
 
     </table>
 
-    <input type="submit" value="Go!" />
-    <input type="reset" value="Start over" />
-    <a href="javascript:history.back()">Cancel</a>
-
+    <div class="leftalignbuttons">
+    <input type="submit" value="[Go]" />
+    <input type="reset" value="[Start over]" />
+    <a href="javascript:history.back()">[Cancel]</a>
+    </div>
 </form>
 </main>
 </body>
