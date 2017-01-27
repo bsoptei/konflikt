@@ -25,7 +25,8 @@
     <table class="wrappertable">
     <thead>
     <tr>
-        <th th:text="'Player name'">Player name</th>
+        <th th:text="'First name'">First name</th>
+        <th th:text="'Last name'">Last name</th>
         <th th:text="'Competing score'">Competing score</th>
         <th th:text="'Compromising score'">Compromising score</th>
         <th th:text="'Avoiding score'">Avoiding score</th>
@@ -35,7 +36,8 @@
     </thead>
     <tbody>
     <tr th:each="player: ${players}">
-        <td th:text="${player.firstName} + ' ' + ${player.lastName}">John Doe</td>
+        <td th:text="${player.firstName}">John</td>
+        <td th:text="${player.lastName}">Doe</td>
         <td th:each="score, scoreIndex: ${player.VKEAPScores}">
         <table class="innertable" >
             <tr>
@@ -60,7 +62,7 @@
 
 </div>
 
-<a class="leftalignbuttons" href="#" th:href="@{'/simulate'}">[Run another simulation]</a>
+<a class="leftalignbuttons" href="#top">[To top]</a>
 </main>
 </body>
 </html>
