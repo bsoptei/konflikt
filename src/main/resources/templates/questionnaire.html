@@ -18,22 +18,26 @@
     </nav>
 </header>
 
-<main>
+<main class = "questions">
 <form action="#" th:action="@{'/submit'}" th:object="${questionnaireForm}" method="post">
     <input type="submit" value="[Submit]"/>
     <input type="reset" value="[Start over]"/>
-    <a class="funky_anchor" href="javascript:history.back()">[Cancel]</a>
-    <a class="funky_anchor" href="#" th:href="@{'/index'}">[Go back to main page]</a>
 
+    <a class="funky_anchor" href="javascript:history.back()">[Cancel]</a>
+
+
+    <div class="labelandinput">
     <label for="content" th:text="'First name:'">First name:</label>
     <input id="content" type="text" th:field="*{personFirstName}" th:required="required" required="true"/>
-
+    </div>
+    <div class="labelandinput">
     <label for="content" th:text="'Last name:'">Last name:</label>
     <input id="content" type="text" th:field="*{personLastName}" th:required="required" required="true"/>
-
-    <ol >
+    </div>
+    <ul>
         <li th:each="question, iterSat : ${questions}">
-    <p th:text="${question}"></p>
+            <p class="exul" th:text="${iterSat.count}">1.</p>
+    <p class="question" th:text="${question}"></p>
 
             <div th:each="choice : ${questionnaireForm.CHOICES}" class="radio">
                 <input type="radio" th:value="${choice}" th:name="${'answers[' + iterSat.count + ']'}" />
@@ -45,7 +49,7 @@
             </div>
 
         </li>
-    </ol>
+    </ul>
     <input type="submit" value="[Submit]"/>
     <input type="reset" value="[Start over]"/>
 </form>

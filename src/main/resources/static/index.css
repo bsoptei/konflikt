@@ -34,6 +34,10 @@ main{
     padding-left: 150px;
 }
 
+.indexp{
+    margin:auto;
+}
+
 /*index oldal vege*/
 
 /*Navbar*/
@@ -181,7 +185,7 @@ a:hover{
 
 /*Simulate oldal*/
 
-p{
+ p{
     margin: 100px auto 10px -200px;
     font-size: 80%;
 }
@@ -287,4 +291,25 @@ table th.last {
 #returnanchor{
     font-size: 70%;
     margin-left: -200px;
+}
+
+/*Faq oldal vege*/
+
+/*Questionnaire oldal*/
+
+.questions.labelandinput label{
+    margin-left: -400px;
+
+}
+
+.questions input[type="radio"]{
+    margin-left: -200px;
+}
+
+.questions li, .questions ul{
+    list-style: none;
+}
+
+.question{
+    margin-top:0;
 }
