@@ -5,16 +5,18 @@
     <link rel="stylesheet" type ="text/css" href= "/static/index.css"/>
     <title>Add</title>
 </head>
-<header>
-<div class="nav" >
-    <ul>
-        <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
-        <li><a href="#" th:href="@{'/simulate'}">Simulate</a></li>
-        <li><a href="#" th:href="@{'/faq'}">FAQ</a></li>
-    </ul>
-</div>
-</header>
+
 <body>
+<header>
+    <div class="nav" >
+        <ul>
+            <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
+            <li><a href="#" th:href="@{'/simulate'}">Simulate</a></li>
+            <li><a href="#" th:href="@{'/faq'}">FAQ</a></li>
+        </ul>
+    </div>
+</header>
+<main>
 <form  action="#" th:action="@{'/add'}" th:object="${groupMember}" method="post">
 <div>
     <div class="labelandinput">
@@ -53,6 +55,6 @@
     </div>
     </div>
 </form>
-
+</main>
 </body>
 </html>
