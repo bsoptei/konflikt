@@ -2,6 +2,10 @@ package com.greenfox.service;
 
 import org.springframework.stereotype.Service;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
 /**
  * Created by Lenovo on 1/26/2017.
  */
@@ -193,5 +197,10 @@ public class QuestionnaireService {
 
 
         return conflictManagementScores;
+    }
+
+    public ArrayList<String> obtainForm() {
+        FileManager fileManager = new FileManager();
+        return fileManager.getDataFromFile(Paths.get("src/main/text/tkquestions.txt"));
     }
 }

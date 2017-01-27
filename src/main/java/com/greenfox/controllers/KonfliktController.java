@@ -77,6 +77,7 @@ public class KonfliktController {
 
     @RequestMapping("/fill")
     public String fillGet(Model model){
+        model.addAttribute("questions", questionnaireService.obtainForm());
         model.addAttribute("questionnaireForm", new Questionnaire());
         return "questionnaire";
     }
