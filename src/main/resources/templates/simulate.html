@@ -8,13 +8,15 @@
 </head>
 <body>
 <header>
-    <div class="nav" >
+    <nav>
+        <img class="logo_image" src="/images/konflikt_logo.png"/>
         <ul>
+            <li><a href="#" th:href="@{'/index'}">Home</a></li>
             <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
             <li><a href="#" th:href="@{'/simulate'}">Simulate</a></li>
             <li><a href="#" th:href="@{'/faq'}">FAQ</a></li>
         </ul>
-    </div>
+    </nav>
 </header>
 <main>
 
@@ -22,7 +24,11 @@
 
 
 <form action="#" th:action="@{'/simulate'}" th:object="${source}" method="post">
-
+    <div class="leftalignbuttons">
+        <input type="submit" value="[Go]" />
+        <input type="reset" value="[Start over]" />
+        <a class="funky_anchor" href="javascript:history.back()">[Cancel]</a>
+    </div>
     <table >
         <thead>
         <tr>
@@ -52,11 +58,7 @@
 
     </table>
 
-    <div class="leftalignbuttons">
-    <input type="submit" value="[Go]" />
-    <input type="reset" value="[Start over]" />
-    <a href="javascript:history.back()">[Cancel]</a>
-    </div>
+
 </form>
 </main>
 </body>

@@ -8,13 +8,15 @@
 
 <body>
 <header>
-    <div class="nav">
+    <nav>
+        <img class="logo_image" src="/images/konflikt_logo.png"/>
         <ul>
+            <li><a href="#" th:href="@{'/index'}">Home</a></li>
             <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
             <li><a href="#" th:href="@{'/simulate'}">Simulate</a></li>
             <li><a href="#" th:href="@{'/faq'}">FAQ</a></li>
         </ul>
-    </div>
+    </nav>
 </header>
 <main>
     <form action="#" th:action="@{'/add'}" th:object="${groupMember}" method="post">
@@ -60,8 +62,8 @@
                 <ul>
                     <li><input type="submit" value="[Submit]"/></li>
                     <li><input type="reset" value="[Reset]"/></li>
-                    <li><p>You don't know the scores yet? </p><a th:href="@{'/fill'}">[Fill out the questionnaire!]</a></li>
-                    <li><a href="javascript:history.back()">[Cancel]</a></li>
+                    <li><p>You don't know the scores yet? </p><a class="funky_anchor" th:href="@{'/fill'}">[Fill out the questionnaire!]</a></li>
+                    <li><a class="funky_anchor" href="javascript:history.back()">[Cancel]</a></li>
                 </ul>
             </div>
         </div>

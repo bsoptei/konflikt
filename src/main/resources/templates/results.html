@@ -8,16 +8,21 @@
 </head>
 <body>
 <header>
-    <div class="nav">
+    <nav>
+        <img class="logo_image" src="/images/konflikt_logo.png"/>
         <ul>
+            <li><a href="#" th:href="@{'/index'}">Home</a></li>
             <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
             <li><a href="#" th:href="@{'/simulate'}">Simulate</a></li>
             <li><a href="#" th:href="@{'/faq'}">FAQ</a></li>
         </ul>
-    </div>
+    </nav>
 </header>
 <main>
-<table class="wrappertable">
+    <h1>Simulation results</h1>
+    <a class="funky_anchor" href="#" th:href="@{'/simulate'}">Run another simulation</a>
+
+    <table class="wrappertable">
     <thead>
     <tr>
         <th th:text="'Player name'">Player name</th>
@@ -55,7 +60,6 @@
 
 </div>
 
-<a href="#" th:href="@{'/simulate'}">Run another simulation</a>
 </main>
 </body>
 </html>
