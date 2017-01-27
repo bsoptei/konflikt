@@ -170,3 +170,20 @@ a:hover{
     font-weight: bold;
 
 }
+
+/*Add oldal vege*/
+
+/*Simulate oldal*/
+
+p{
+    padding-top: 50px;
+    font-size: 80%;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: gray;
+    font-size: 80%;
+}

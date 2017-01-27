@@ -2,19 +2,28 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Simulate</title>
+    <link rel="stylesheet" type ="text/css" href= "/static/index.css"/>
+
 </head>
 <body>
-<h1>Hello!</h1>
+<header>
+    <div class="nav" >
+        <ul>
+            <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
+            <li><a href="#" th:href="@{'/simulate'}">Simulate</a></li>
+            <li><a href="#" th:href="@{'/faq'}">FAQ</a></li>
+        </ul>
+    </div>
+</header>
+<main>
+
 <p>Select people to add them to the simulation group.</p>
 
 
 <form action="#" th:action="@{'/simulate'}" th:object="${source}" method="post">
-    <input type="submit" value="Go!"/>
-    <input type="reset" value="Start over"/>
-    <a href="javascript:history.back()">Cancel</a>
 
-    <table>
+    <table >
         <thead>
         <tr>
             <th th:text="'Player name'">Player name</th>
@@ -28,19 +37,24 @@
         </thead>
         <th:block th:each="member : ${memberList}">
             <tr>
-                <td th:text="${member.firstName} + ' ' + ${member.lastName}">John Doe</td>
+                <td th:text="${member.name}">John Doe</td>
                 <td th:text="${#numbers.formatDecimal(member.competingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.compromisingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.avoidingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.accommodatingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.collaboratingScore,1,2)}">0.1</td>
-                <td><input type="checkbox" th:field="*{idList}" th:value="|${member.id}|"/></td>
+                    <td><input type="checkbox" th:field="*{idList}" th:value="|${member.id}|" /></td>
 
             </tr>
         </th:block>
 
     </table>
-</form>
 
+    <input type="submit" value="Go!" />
+    <input type="reset" value="Start over" />
+    <a href="javascript:history.back()">Cancel</a>
+
+</form>
+</main>
 </body>
 </html>
