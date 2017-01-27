@@ -8,9 +8,8 @@
 
 <body>
 <header>
-    <nav >
+    <nav>
         <img class="logo_image" src="/images/konflikt_logo.png"/>
-
         <ul>
             <li><a href="#" th:href="@{'/index'}">Home</a></li>
             <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
@@ -24,13 +23,15 @@
     <ul>
         <li>
             <p><b>Q: What is the Thomas-Kilmann Model?</b></p>
-            <p>A: <a class="funky_anchor" target="_blank" href="http://www.kilmanndiagnostics.com/overview-thomas-kilmann-conflict-mode-instrument-tki">Read
+            <p>A: <a class="funky_anchor" target="_blank"
+                     href="http://www.kilmanndiagnostics.com/overview-thomas-kilmann-conflict-mode-instrument-tki">Read
                 about it here</a></p>
         </li>
         <li>
             <p><b>Q: What should I expect?</b></p>
             <p>A: In the background, players play their game like this:</p>
-            <iframe src="//giphy.com/embed/cPb9aJFaQhJgQ?html5=true" width="480" height="370" frameBorder="0" class="giphy-embed" ></iframe>
+            <iframe src="//giphy.com/embed/cPb9aJFaQhJgQ?html5=true" width="480" height="370" frameBorder="0"
+                    class="giphy-embed"></iframe>
 
             <p>Actually, you get the data of the most probable situation of conflict resolution, including:</p>
             <ul class="insidelist">
@@ -40,7 +41,8 @@
         </li>
         <li>
             <p><b>Q: How does this work?</b></p>
-            <p>A: The conflict simulation is based on compatible strategies (see table). The assumptions behind the algorithm are the following:</p>
+            <p>A: The conflict simulation is based on compatible strategies (see table). The assumptions behind the
+                algorithm are the following:</p>
             <ul class="insidelist">
                 <li>All conflicts are resolved.</li>
                 <li>Conflicts are non-zero-sum games.</li>
@@ -48,7 +50,7 @@
                 <li>Players change their strategy if needed, strategy choices are made by individual preferences.</li>
                 <li>A conflict is resolved if all player strategies are compatible with each other.</li>
             </ul>
-        <table>
+            <table>
                 <tr>
                     <th></th>
                     <th>Competing</th>
@@ -101,7 +103,7 @@
         </li>
         <li>
             <p>Just like this</p>
-            <img src="/images/logic.png" />
+            <img src="/images/logic.png"/>
         </li>
         <li>
             <p><b>Q: How many players can the simulation work with?</b></p>

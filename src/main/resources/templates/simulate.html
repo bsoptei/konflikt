@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Simulate</title>
-    <link rel="stylesheet" type ="text/css" href= "/static/index.css"/>
-
+    <link rel="stylesheet" type="text/css" href="/static/index.css"/>
 </head>
 <body>
 <header>
@@ -19,48 +18,43 @@
     </nav>
 </header>
 <main>
-<h1>Simulate</h1>
-<p>Select people to add them to the simulation group.</p>
-
-
-<form action="#" th:action="@{'/simulate'}" th:object="${source}" method="post">
-    <div class="leftalignbuttons">
-        <input type="submit" value="[Go]" />
-        <input type="reset" value="[Start over]" />
-        <a class="funky_anchor" href="javascript:history.back()">[Cancel]</a>
-    </div>
-    <table >
-        <thead>
-        <tr>
-            <th th:text="'First Name'">Player name</th>
-            <th th:text="'Last Name'">Player name</th>
-            <th th:text="'Competing score'">Competing score</th>
-            <th th:text="'Compromising score'">Compromising score</th>
-            <th th:text="'Avoiding score'">Avoiding score</th>
-            <th th:text="'Accommodating score'">Accommodating score</th>
-            <th th:text="'Collaborating score'">Collaborating score</th>
-            <th th:text="'Select'">Select</th>
-        </tr>
-        </thead>
-        <th:block th:each="member : ${memberList}">
+    <h1>Simulate</h1>
+    <p>Select people to add them to the simulation group.</p>
+    <form action="#" th:action="@{'/simulate'}" th:object="${source}" method="post">
+        <div class="leftalignbuttons">
+            <input type="submit" value="[Go]"/>
+            <input type="reset" value="[Start over]"/>
+            <a class="funky_anchor" href="javascript:history.back()">[Cancel]</a>
+        </div>
+        <table>
+            <thead>
             <tr>
-                <td th:text="${member.firstName}">John</td>
-                <td th:text="${member.lastName}">Doe</td>
-                <td th:text="${#numbers.formatDecimal(member.competingScore,1,2)}">0.1</td>
-                <td th:text="${#numbers.formatDecimal(member.compromisingScore,1,2)}">0.1</td>
-                <td th:text="${#numbers.formatDecimal(member.avoidingScore,1,2)}">0.1</td>
-                <td th:text="${#numbers.formatDecimal(member.accommodatingScore,1,2)}">0.1</td>
-                <td th:text="${#numbers.formatDecimal(member.collaboratingScore,1,2)}">0.1</td>
-                    <td><input type="checkbox" th:field="*{idList}" th:value="|${member.id}|" /></td>
-
+                <th th:text="'First Name'">Player name</th>
+                <th th:text="'Last Name'">Player name</th>
+                <th th:text="'Competing score'">Competing score</th>
+                <th th:text="'Compromising score'">Compromising score</th>
+                <th th:text="'Avoiding score'">Avoiding score</th>
+                <th th:text="'Accommodating score'">Accommodating score</th>
+                <th th:text="'Collaborating score'">Collaborating score</th>
+                <th th:text="'Select'">Select</th>
             </tr>
-        </th:block>
+            </thead>
+            <th:block th:each="member : ${memberList}">
+                <tr>
+                    <td th:text="${member.firstName}">John</td>
+                    <td th:text="${member.lastName}">Doe</td>
+                    <td th:text="${#numbers.formatDecimal(member.competingScore,1,2)}">0.1</td>
+                    <td th:text="${#numbers.formatDecimal(member.compromisingScore,1,2)}">0.1</td>
+                    <td th:text="${#numbers.formatDecimal(member.avoidingScore,1,2)}">0.1</td>
+                    <td th:text="${#numbers.formatDecimal(member.accommodatingScore,1,2)}">0.1</td>
+                    <td th:text="${#numbers.formatDecimal(member.collaboratingScore,1,2)}">0.1</td>
+                    <td><input type="checkbox" th:field="*{idList}" th:value="|${member.id}|"/></td>
+                </tr>
+            </th:block>
 
-    </table>
-
-
-</form>
-    <a class="leftalignbuttons" href="#top">[To top]</a>
+        </table>
+    </form>
+    <a class="funky_anchor" href="#top">[To top]</a>
 </main>
 </body>
 </html>

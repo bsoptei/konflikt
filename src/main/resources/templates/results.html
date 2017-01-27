@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Results</title>
-    <link rel="stylesheet" type ="text/css" href= "/static/index.css"/>
-
+    <link rel="stylesheet" type="text/css" href="/static/index.css"/>
 </head>
 <body>
 <header>
@@ -21,48 +20,46 @@
 <main>
     <h1>Simulation results</h1>
     <a class="funky_anchor" href="#" th:href="@{'/simulate'}">Run another simulation</a>
-
     <table class="wrappertable">
-    <thead>
-    <tr>
-        <th th:text="'First name'">First name</th>
-        <th th:text="'Last name'">Last name</th>
-        <th th:text="'Competing score'">Competing score</th>
-        <th th:text="'Compromising score'">Compromising score</th>
-        <th th:text="'Avoiding score'">Avoiding score</th>
-        <th th:text="'Accommodating score'">Accommodating score</th>
-        <th th:text="'Collaborating score'">Collaborating score</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="player: ${players}">
-        <td th:text="${player.firstName}">John</td>
-        <td th:text="${player.lastName}">Doe</td>
-        <td th:each="score, scoreIndex: ${player.VKEAPScores}">
-        <table class="innertable" >
-            <tr>
-        <td th:text="${#numbers.formatDecimal(player.VKEAPScores[scoreIndex.index],1,2)}">0.1</td>
-            </tr>
-        </table>
-        </td>
+        <thead>
+        <tr>
+            <th th:text="'First name'">First name</th>
+            <th th:text="'Last name'">Last name</th>
+            <th th:text="'Competing score'">Competing score</th>
+            <th th:text="'Compromising score'">Compromising score</th>
+            <th th:text="'Avoiding score'">Avoiding score</th>
+            <th th:text="'Accommodating score'">Accommodating score</th>
+            <th th:text="'Collaborating score'">Collaborating score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="player: ${players}">
+            <td th:text="${player.firstName}">John</td>
+            <td th:text="${player.lastName}">Doe</td>
+            <td th:each="score, scoreIndex: ${player.VKEAPScores}">
+                <table class="innertable">
+                    <tr>
+                        <td th:text="${#numbers.formatDecimal(player.VKEAPScores[scoreIndex.index],1,2)}">0.1</td>
+                    </tr>
+                </table>
+            </td>
 
-    </tr>
-    </tbody>
-</table>
-<div th:each="solution, iter: ${solutions}">
-
-    <ul class="resultlist" th:if="${iter.count le 5}" >
-        <li th:text="'Resolution number ' + ${iter.count} + ', Weighted score: ' + ${#numbers.formatDecimal(solution.value, 1, 2)}"></li>
-        <li>
-        <ul th:each="player, iterStat:${players}">
-            <li th:text="${player.firstName} + ' ' + ${player.lastName} + '\'s strategy: ' + ${strategyNames.get(solution.key.charAt(iterStat.index))}"></li>
+        </tr>
+        </tbody>
+    </table>
+    <div th:each="solution, iter: ${solutions}">
+        <ul class="resultlist" th:if="${iter.count le 5}">
+            <li th:text="'Resolution number ' + ${iter.count} + ', Weighted score: ' + ${#numbers.formatDecimal(solution.value, 1, 2)}"></li>
+            <li>
+                <ul th:each="player, iterStat:${players}">
+                    <li th:text="${player.firstName} + ' ' + ${player.lastName} + '\'s strategy: ' + ${strategyNames.get(solution.key.charAt(iterStat.index))}"></li>
+                </ul>
+            </li>
         </ul>
-        </li>
-    </ul>
 
-</div>
+    </div>
 
-<a class="leftalignbuttons" href="#top">[To top]</a>
+    <a class="funky_anchor" href="#top">[To top]</a>
 </main>
 </body>
 </html>

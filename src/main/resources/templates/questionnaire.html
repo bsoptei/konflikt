@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Questionnaire</title>
-    <link rel="stylesheet" type ="text/css" href= "/static/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/index.css"/>
 </head>
 <body>
 <header>
@@ -18,41 +18,38 @@
     </nav>
 </header>
 
-<main class = "questions">
-<form action="#" th:action="@{'/submit'}" th:object="${questionnaireForm}" method="post">
-    <input type="submit" value="[Submit]"/>
-    <input type="reset" value="[Start over]"/>
+<main class="questions">
+    <form action="#" th:action="@{'/submit'}" th:object="${questionnaireForm}" method="post">
+        <input type="submit" value="[Submit]"/>
+        <input type="reset" value="[Start over]"/>
+        <a class="funky_anchor" href="javascript:history.back()">[Cancel]</a>
+        <div class="labelandinput">
+            <label for="content" th:text="'First name:'">First name:</label>
+            <input id="content" type="text" th:field="*{personFirstName}" th:required="required" required="true"/>
+        </div>
+        <div class="labelandinput">
+            <label for="content" th:text="'Last name:'">Last name:</label>
+            <input id="content" type="text" th:field="*{personLastName}" th:required="required" required="true"/>
+        </div>
+        <ul>
+            <li th:each="question, iterSat : ${questions}">
+                <p class="exul" th:text="${iterSat.count}">1.</p>
+                <p class="question" th:text="${question}"></p>
 
-    <a class="funky_anchor" href="javascript:history.back()">[Cancel]</a>
-
-
-    <div class="labelandinput">
-    <label for="content" th:text="'First name:'">First name:</label>
-    <input id="content" type="text" th:field="*{personFirstName}" th:required="required" required="true"/>
-    </div>
-    <div class="labelandinput">
-    <label for="content" th:text="'Last name:'">Last name:</label>
-    <input id="content" type="text" th:field="*{personLastName}" th:required="required" required="true"/>
-    </div>
-    <ul>
-        <li th:each="question, iterSat : ${questions}">
-            <p class="exul" th:text="${iterSat.count}">1.</p>
-    <p class="question" th:text="${question}"></p>
-
-            <div th:each="choice : ${questionnaireForm.CHOICES}" class="radio">
-                <input type="radio" th:value="${choice}" th:name="${'answers[' + iterSat.count + ']'}" />
-                <label th:text="${choice}">Male</label>
-            </div>
-            <div th:remove="all" class="radio">
-                <input type="radio" />
-                <label>Female</label>
-            </div>
-
-        </li>
-    </ul>
-    <input type="submit" value="[Submit]"/>
-    <input type="reset" value="[Start over]"/>
-</form>
+                <div th:each="choice : ${questionnaireForm.CHOICES}" class="radio">
+                    <input type="radio" th:value="${choice}" th:name="${'answers[' + iterSat.count + ']'}"/>
+                    <label th:text="${choice}">Male</label>
+                </div>
+                <div th:remove="all" class="radio">
+                    <input type="radio"/>
+                    <label>Female</label>
+                </div>
+            </li>
+        </ul>
+        <input type="submit" value="[Submit]"/>
+        <input type="reset" value="[Start over]"/>
+        <a class="funky_anchor" href="#top">[To top]</a>
+    </form>
 </main>
 </body>
 </html>
