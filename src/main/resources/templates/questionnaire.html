@@ -10,12 +10,16 @@
 
 
 <form action="#" th:action="@{'/submit'}" th:object="${questionnaireForm}" method="post">
-    <input type="submit" value="Go!"/>
-    <input type="reset" value="Start over"/>
-    <a href="javascript:history.back()">Cancel</a>
+    <input type="submit" value="[Submit]"/>
+    <input type="reset" value="[Start over]"/>
+    <a href="javascript:history.back()">[Cancel]</a>
+    <a href="#" th:href="@{'/index'}">[Go back to main page]</a>
 
-    <label for="content" th:text="'Name:'">Name:</label>
-    <input id="content" type="text" th:field="*{personName}" th:required="required" required="true"/>
+    <label for="content" th:text="'First name:'">First name:</label>
+    <input id="content" type="text" th:field="*{personFirstName}" th:required="required" required="true"/>
+
+    <label for="content" th:text="'Last name:'">Last name:</label>
+    <input id="content" type="text" th:field="*{personLastName}" th:required="required" required="true"/>
 
     <ol >
         <li th:each="question, iterSat : ${questions}">
@@ -31,8 +35,9 @@
             </div>
 
         </li>
-
     </ol>
+    <input type="submit" value="[Submit]"/>
+    <input type="reset" value="[Start over]"/>
 </form>
 
 </body>

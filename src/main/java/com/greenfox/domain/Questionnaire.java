@@ -12,6 +12,7 @@ import java.util.Arrays;
 public class Questionnaire {
     private String sourceName;
     private String[] answers;
-    private String personName;
+    private String personFirstName;
+    private String personLastName;
     private final ArrayList<String> CHOICES = new ArrayList<>(Arrays.asList("A", "B"));
 }

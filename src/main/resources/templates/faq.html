@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" type ="text/css" href= "/static/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/index.css"/>
     <title>Index</title>
 </head>
 
@@ -10,11 +10,88 @@
 <main>
     <ul>
         <li>
-            <p>Q:What is this?</p>
-            <p>A: This is something.</p>
-            <!--etc :-->
+            <p>Q: What is the Thomas-Kilmann Model?</p>
+            <p>A: <a href="http://www.kilmanndiagnostics.com/overview-thomas-kilmann-conflict-mode-instrument-tki">Read
+                about it here</a></p>
+        </li>
+        <li>
+            <p>Q: What should I expect?</p>
+            <p>A: In the background, players play their game like this:</p>
+            <iframe src="//giphy.com/embed/cPb9aJFaQhJgQ?html5=true" width="480" height="370" frameBorder="0" class="giphy-embed" ></iframe>
+            <p><a href="http://giphy.com/gifs/cPb9aJFaQhJgQ">via GIPHY</a></p>
+            <p>Actually, you get the data of the most probable situation of conflict resolution, including:</p>
+            <ul>
+                <li>A weighted average score of the situation.</li>
+                <li>The chosen strategy of each player.</li>
+            </ul>
+        </li>
+        <li>
+            <p>Q: How does this work?</p>
+            <p>A: The conflict simulation is based on compatible strategies (see table). The assumptions behind the algorithm are the following:</p>
+            <ul>
+                <li>All conflicts are resolved.</li>
+                <li>Conflicts are non-zero-sum games.</li>
+                <li>Players are motivated to solve the conflict.</li>
+                <li>Players change their strategy if needed, strategy choices are made by individual preferences.</li>
+                <li>A conflict is resolved if all player strategies are compatible with each other.</li>
+            </ul>
+        <table>
+                <tr>
+                    <th></th>
+                    <th>Competing</th>
+                    <th>Compromising</th>
+                    <th>Avoiding</th>
+                    <th>Accommodating</th>
+                    <th>Collaborating</th>
+                </tr>
+                <tr>
+                    <th>Competing</th>
+                    <td>&#10007;</td>
+                    <td>&#10003;</td>
+                    <td>&#10003;</td>
+                    <td>&#10003;</td>
+                    <td>&#10007;</td>
+                </tr>
+                <tr>
+                    <th>Compromising</th>
+                    <td></td>
+                    <td>&#10003;</td>
+                    <td>&#10007;</td>
+                    <td>&#10007;</td>
+                    <td>&#10003;</td>
+                </tr>
+                <tr>
+                    <th>Avoiding</th>
+                    <td></td>
+                    <td></td>
+                    <td>&#10007;</td>
+                    <td>&#10007;</td>
+                    <td>&#10003;</td>
+                </tr>
+                <tr>
+                    <th>Accommodating</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>&#10007;</td>
+                    <td>&#10003;</td>
+                </tr>
+                <tr>
+                    <th>Collaborating</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>&#10003;</td>
+                </tr>
+            </table>
+        </li>
+        <li>
+            <p>Q: How many players can the simulation work with?</p>
+            <p>A: Minimum 2 players, the maximum is yet to be tested.</p>
         </li>
     </ul>
+    <a href="#" th:href="@{'/index'}">[Go back to main page]</a>
 </main>
 </body>
 </html>

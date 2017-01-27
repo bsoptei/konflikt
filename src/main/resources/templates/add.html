@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" type ="text/css" href= "/static/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/index.css"/>
     <title>Add</title>
 </head>
 
 <body>
 <header>
-    <div class="nav" >
+    <div class="nav">
         <ul>
             <li><a href="#" th:href="@{'/add'}">Add new person</a></li>
             <li><a href="#" th:href="@{'/simulate'}">Simulate</a></li>
@@ -17,44 +17,55 @@
     </div>
 </header>
 <main>
-<form  action="#" th:action="@{'/add'}" th:object="${groupMember}" method="post">
-<div>
-    <div class="labelandinput">
-    <label for="content" th:text="'Name'">Name</label>
-    <input id="content" type="text" th:field="*{name}" th:required="required" required="true"/>
-    </div>
-
-    <div class="labelandinput">
-
-    <label for="competingScore" th:text="'Competing score'">Competing score</label>
-    <input id="competingScore" type="number" min="0" step="0.01" th:field="*{competingScore}" th:required="required" required="true"/>
-    </div>
-        <div class="labelandinput">
-
-    <label for="compromisingScore" th:text="'Compromising score'">Compromising score</label>
-    <input id="compromisingScore" type="number" min="0" step="0.01" th:field="*{compromisingScore}" th:required="required" required="true"/>
-        </div>
+    <form action="#" th:action="@{'/add'}" th:object="${groupMember}" method="post">
+        <div>
             <div class="labelandinput">
-    <label for="avoidingScore" th:text="'Avoiding score'">Avoiding score</label>
-    <input id="avoidingScore" type="number" min="0" step="0.01" th:field="*{avoidingScore}" th:required="required" required="true"/>
+                <label for="content" th:text="'First name'">First name</label>
+                <input id="content" type="text" th:field="*{firstName}" th:required="required" required="true"/>
             </div>
-                <div class="labelandinput">
-    <label for="accommodatingScore" th:text="'Accommodating score'">Accommodating score</label>
-    <input id="accommodatingScore" type="number" min="0" step="0.01" th:field="*{accommodatingScore}" th:required="required" required="true"/>
-                </div>
-                <div class="labelandinput">
-    <label for="collaboratingScore" th:text="'Collaborating score'">Collaborating score</label>
-    <input id="collaboratingScore" type="number" min="0" step="0.01" th:field="*{collaboratingScore}" th:required="required" required="true"/>
-                </div>
-    <div class="buttons">
-        <ul>
-    <li><input type="submit" value="[Submit]"/></li>
-            <li><input type="reset" value="[Reset]"/></li>
-            <li><a href="javascript:history.back()">[Cancel]</a></li>
-        </ul>
-    </div>
-    </div>
-</form>
+
+            <div class="labelandinput">
+                <label for="content" th:text="'Last name'">Last name</label>
+                <input id="content" type="text" th:field="*{lastName}" th:required="required" required="true"/>
+            </div>
+
+            <div class="labelandinput">
+
+                <label for="competingScore" th:text="'Competing score'">Competing score</label>
+                <input id="competingScore" type="number" min="0" step="0.01" th:field="*{competingScore}"
+                       th:required="required" required="true"/>
+            </div>
+            <div class="labelandinput">
+
+                <label for="compromisingScore" th:text="'Compromising score'">Compromising score</label>
+                <input id="compromisingScore" type="number" min="0" step="0.01" th:field="*{compromisingScore}"
+                       th:required="required" required="true"/>
+            </div>
+            <div class="labelandinput">
+                <label for="avoidingScore" th:text="'Avoiding score'">Avoiding score</label>
+                <input id="avoidingScore" type="number" min="0" step="0.01" th:field="*{avoidingScore}"
+                       th:required="required" required="true"/>
+            </div>
+            <div class="labelandinput">
+                <label for="accommodatingScore" th:text="'Accommodating score'">Accommodating score</label>
+                <input id="accommodatingScore" type="number" min="0" step="0.01" th:field="*{accommodatingScore}"
+                       th:required="required" required="true"/>
+            </div>
+            <div class="labelandinput">
+                <label for="collaboratingScore" th:text="'Collaborating score'">Collaborating score</label>
+                <input id="collaboratingScore" type="number" min="0" step="0.01" th:field="*{collaboratingScore}"
+                       th:required="required" required="true"/>
+            </div>
+            <div class="buttons">
+                <ul>
+                    <li><input type="submit" value="[Submit]"/></li>
+                    <li><input type="reset" value="[Reset]"/></li>
+                    <li><p>You don't know the scores yet? </p><a th:href="@{'/fill'}">[Fill out the questionnaire!]</a></li>
+                    <li><a href="javascript:history.back()">[Cancel]</a></li>
+                </ul>
+            </div>
+        </div>
+    </form>
 </main>
 </body>
 </html>

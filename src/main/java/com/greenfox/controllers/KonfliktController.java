@@ -66,12 +66,15 @@ public class KonfliktController {
 
     @PostMapping("/submit")
     public String submitPost(@ModelAttribute Questionnaire questionnaire) {
-        Double[] VKEAPScoresFromQuestionnaire = questionnaireService.evaluateAnswers(questionnaire.getAnswers());
-        GroupMember newGroupMember = new GroupMember();
-        newGroupMember.setName(questionnaire.getPersonName());
-        groupMemberService.adjustMemberScores(VKEAPScoresFromQuestionnaire, newGroupMember);
-        groupMemberService.normalizeGroupMemberScores(newGroupMember);
-        groupMemberService.saveGroupMember(newGroupMember);
+        if (questionnaire.getAnswers().length == 31) {
+            Double[] VKEAPScoresFromQuestionnaire = questionnaireService.evaluateAnswers(questionnaire.getAnswers());
+            GroupMember newGroupMember = new GroupMember();
+            newGroupMember.setFirstName(questionnaire.getPersonFirstName());
+            newGroupMember.setLastName(questionnaire.getPersonLastName());
+            groupMemberService.adjustMemberScores(VKEAPScoresFromQuestionnaire, newGroupMember);
+            groupMemberService.normalizeGroupMemberScores(newGroupMember);
+            groupMemberService.saveGroupMember(newGroupMember);
+        }
         return "redirect:/index";
     }
 

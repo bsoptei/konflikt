@@ -10,11 +10,11 @@
 
 
 <form action="#" th:action="@{'/simulate'}" th:object="${source}" method="post">
-    <input type="submit" value="Go!" />
-    <input type="reset" value="Start over" />
+    <input type="submit" value="Go!"/>
+    <input type="reset" value="Start over"/>
     <a href="javascript:history.back()">Cancel</a>
 
-    <table >
+    <table>
         <thead>
         <tr>
             <th th:text="'Player name'">Player name</th>
@@ -28,13 +28,13 @@
         </thead>
         <th:block th:each="member : ${memberList}">
             <tr>
-                <td th:text="${member.name}">John Doe</td>
+                <td th:text="${member.firstName} + ' ' + ${member.lastName}">John Doe</td>
                 <td th:text="${#numbers.formatDecimal(member.competingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.compromisingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.avoidingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.accommodatingScore,1,2)}">0.1</td>
                 <td th:text="${#numbers.formatDecimal(member.collaboratingScore,1,2)}">0.1</td>
-                    <td><input type="checkbox" th:field="*{idList}" th:value="|${member.id}|" /></td>
+                <td><input type="checkbox" th:field="*{idList}" th:value="|${member.id}|"/></td>
 
             </tr>
         </th:block>

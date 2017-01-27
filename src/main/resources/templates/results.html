@@ -8,6 +8,7 @@
 </head>
 <body>
 <a href="#" th:href="@{'/index'}">Back to main page</a>
+<a href="#" th:href="@{'/simulate'}">Run another simulation</a>
 <table>
     <thead>
     <tr>
@@ -21,7 +22,7 @@
     </thead>
     <tbody>
     <tr th:each="player: ${players}">
-        <td th:text="${player.name}">John Doe</td>
+        <td th:text="${player.firstName} + ' ' + ${player.lastName}">John Doe</td>
         <td th:each="score, scoreIndex: ${player.VKEAPScores}">
         <table>
             <tr>
@@ -39,7 +40,7 @@
         <li th:text="'Resolution number ' + ${iter.count} + ', Weighted score: ' + ${#numbers.formatDecimal(solution.value, 1, 2)}"></li>
         <li>
         <ul th:each="player, iterStat:${players}">
-            <li th:text="${player.name} + '\'s strategy: ' + ${strategyNames.get(solution.key.charAt(iterStat.index))}"></li>
+            <li th:text="${player.firstName} + ' ' + ${player.lastName} + '\'s strategy: ' + ${strategyNames.get(solution.key.charAt(iterStat.index))}"></li>
         </ul>
         </li>
     </ul>

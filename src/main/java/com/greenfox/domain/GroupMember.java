@@ -18,7 +18,8 @@ public class GroupMember {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(AccessLevel.NONE)
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private Double competingScore;
     private Double compromisingScore;
     private Double avoidingScore;
